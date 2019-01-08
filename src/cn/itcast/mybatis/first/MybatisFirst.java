@@ -110,7 +110,7 @@ public class MybatisFirst {
 		sqlSession.commit();
 
 		// 获取用户信息主键
-//		System.out.println(user.getId());
+		System.out.println(user.getId());
 		// 关闭会话
 		sqlSession.close();
 
