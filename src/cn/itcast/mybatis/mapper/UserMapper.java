@@ -24,6 +24,9 @@ public interface UserMapper {
 	//根据id查询用户信息
 	public User findUserById(int id) throws Exception;
 
+	//根据id查询用户信息，使用resultMap输出
+	public User findUserByIdResultMap(int id) throws Exception;
+	
 	//根据用户名列查询用户列表
 	public List<User> findUserByName(String name)throws Exception;
 	

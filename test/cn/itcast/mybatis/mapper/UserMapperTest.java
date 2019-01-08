@@ -77,6 +77,20 @@ public class UserMapperTest {
 	}
 	
 	@Test
+	public void testFindUserByIdResultMap() throws Exception {
+		
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		
+		//创建UserMapper对象，mybatis自动生成mapper代理对象
+		UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+		
+		//调用userMapper的方法，user的类型为User，因为ResultMap指定的类型就是User		
+		User user = userMapper.findUserByIdResultMap(1);
+		
+		System.out.println(user);				
+	}
+	
+	@Test
 	public void testFindUserById() throws Exception {
 		
 		SqlSession sqlSession = sqlSessionFactory.openSession();
