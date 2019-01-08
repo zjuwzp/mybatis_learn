@@ -8,6 +8,24 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<!--properties中还可以配置一些属性名和属性值,就是除了读 其他配置文件，自己里头也能配 -->
 		<!-- <property name="jdbc.driver" value=""/> -->
 	</properties>
+	
+	<!-- 全局配置参数，需要时再设置 -->
+	<!-- <settings>
+	
+	</settings> -->
+	
+	<!-- 别名定义 -->
+	<typeAliases>		
+		<!-- 针对单个别名定义
+			type：类型的路径  alias：别名 -->
+		<!-- <typeAlias type="cn.itcast.mybatis.po.User" alias="user"/> -->
+		<!-- 批量别名定义 
+			指定包名，mybatis自动扫描包中的po类，自动定义别名，别名就是类名（首字母大写或小写都可以）
+			如果有多个包需要定义别名，则下面可以写多个package或者写通配符
+		-->
+		<package name="cn.itcast.mybatis.po"/>		
+	</typeAliases>
+	
 	<!-- 和spring整合后 environments配置将废除-->
 	<environments default="development">
 		<environment id="development">

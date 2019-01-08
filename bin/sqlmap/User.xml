@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	resultType：指定sql输出结果 的所映射的java对象类型，select指定resultType表示将单条记录映射成的java对象。
 	 -->
-	<select id="findUserById" parameterType="int" resultType="cn.itcast.mybatis.po.User">
+	<select id="findUserById" parameterType="int" resultType="User">
 		SELECT * FROM USER WHERE id=#{value}
 	</select>
 	
@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	使用${}拼接sql，引起 sql注入
 	${value}：接收输入 参数的内容，如果传入类型是简单类型，${}中只能使用value
 	 -->
-	<select id="findUserByName" parameterType="java.lang.String" resultType="cn.itcast.mybatis.po.User">
+	<select id="findUserByName" parameterType="java.lang.String" resultType="User">
 		SELECT * FROM USER WHERE username LIKE '%${value}%'
 	</select>
 	
@@ -81,7 +81,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	parameterType指定user对象，包括 id和更新信息，注意：id必须存在
 	#{id}：从输入 user对象中获取id属性值
 	 -->
-	<update id="updateUser" parameterType="cn.itcast.mybatis.po.User">
+	<update id="updateUser" parameterType="User">
 		update user set username=#{username},birthday=#{birthday},sex=#{sex},address=#{address} 
 		 where id=#{id}
 	</update>
