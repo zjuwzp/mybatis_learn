@@ -3,6 +3,7 @@ package cn.itcast.mybatis.mapper;
 import static org.junit.Assert.*;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -48,7 +49,14 @@ public class UserMapperTest {
 		UserQueryVo userQueryVo = new UserQueryVo();
 		UserCustom userCustom = new UserCustom();
 		userCustom.setSex("1");
-		userCustom.setUsername("张三丰");
+		userCustom.setUsername("小明");
+		//传入多个id
+		List<Integer> ids = new ArrayList<Integer>();
+		ids.add(1);
+		ids.add(10);
+		ids.add(16);
+		//将ids通过userQueryVo传入statement中
+		userQueryVo.setIds(ids);
 		userQueryVo.setUserCustom(userCustom);
 		//调用userMapper的方法
 		
