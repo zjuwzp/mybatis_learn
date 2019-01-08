@@ -40,6 +40,8 @@ public class UserDaoImpl implements UserDao {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 
 		User user = sqlSession.selectOne("test.findUserById", id);
+		//这一行竟然不报错，这不利于程序员开发，说明参数是以泛型接受
+		//User user = sqlSession.selectOne("test.findUserById", new Date());    
 
 		// 释放资源
 		sqlSession.close();
