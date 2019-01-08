@@ -7,7 +7,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 注意：使用mapper代理方法开发，namespace有特殊重要的作用，等于mapper接口地址
 -->
 <mapper namespace="cn.itcast.mybatis.mapper.UserMapper">
-
+	<sql id="query_user_where">
+		<if test="userCustom!=null">
+			<if test="userCustom.sex!=null and userCustom.sex!=''">
+				and user.sex = #{userCustom.sex}
+			</if>
+			<if test="userCustom.username!=null and userCustom.username!=''">
+				And user.username LIKE '%${userCustom.username}%'
+			</if>
+		</if>
+	</sql>
+	
 	<!-- 定义resultMap
 		将SELECT id id_,username username_ FROM USER 和User类中的属性作一个映射关系		
 		type：resultMap最终映射的java对象类型,可以使用别名
@@ -39,14 +49,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 		<!-- where可以自动去掉条件中的第一个and,好处是不用写where 1=1 -->
 		<where>
-			<if test="userCustom!=null">
-				<if test="userCustom.sex!=null and userCustom.sex!=''">
-					and user.sex = #{userCustom.sex}
-				</if>
-				<if test="userCustom.username!=null and userCustom.username!=''">
-					And user.username LIKE '%${userCustom.username}%'
-				</if>
-			</if>
+			<!-- 引用sql片段 的id，如果refid指定的id不在本mapper文件中，需要前边加namespace -->
+			<include refid="query_user_where"></include>
+			<!-- 在这里还可以引用其它的sql片段  -->
 		</where>
 		
 	</select>
@@ -60,14 +65,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- where可以自动去掉条件中的第一个and,好处是不用写where 1=1 -->
 		<where>
-			<if test="userCustom!=null">
-				<if test="userCustom.sex!=null and userCustom.sex!=''">
-					and user.sex = #{userCustom.sex}
-				</if>
-				<if test="userCustom.username!=null and userCustom.username!=''">
-					And user.username LIKE '%${userCustom.username}%'
-				</if>
-			</if>
+			<!-- 引用sql片段 的id，如果refid指定的id不在本mapper文件中，需要前边加namespace -->
+			<include refid="query_user_where"></include>
+			<!-- 在这里还可以引用其它的sql片段  -->
 		</where>
 	</select>
 
