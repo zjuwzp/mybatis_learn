@@ -7,6 +7,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 注意：使用mapper代理方法开发，namespace有特殊重要的作用，等于mapper接口地址
 -->
 <mapper namespace="cn.itcast.mybatis.mapper.UserMapper">
+
+	<!-- 用户信息综合查询
+	#{userCustom.sex}:取出pojo包装对象中性别值
+	${userCustom.username}：取出pojo包装对象中用户名称
+	 -->
+	<select id="findUserList" parameterType="cn.itcast.mybatis.po.UserQueryVo" 
+			resultType="cn.itcast.mybatis.po.UserCustom">
+		SELECT * FROM USER where user.sex = #{userCustom.sex} And user.username LIKE '%${userCustom.username}%'			
+	</select>
+
 	<!-- 在 映射文件中配置很多sql语句 -->
 	<!-- 需求：通过id查询用户表的记录 -->
 	<!-- 通过 select执行数据库查询
