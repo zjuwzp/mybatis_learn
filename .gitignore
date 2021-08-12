@@ -33,4 +33,4 @@ build/
 
 LOG_PATH_IS_UNDEFINED/
 
-/bin/**
+bin/cn/itcast/mybatis/dao/UserDao.class

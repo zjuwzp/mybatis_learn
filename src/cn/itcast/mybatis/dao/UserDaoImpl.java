@@ -14,20 +14,20 @@ import cn.itcast.mybatis.po.User;
  * Title: UserDaoImpl
  * </p>
  * <p>
- * Description:dao½Ó¿ÚÊµÏÖÀà
+ * Description:daoï¿½Ó¿ï¿½Êµï¿½ï¿½ï¿½ï¿½
  * </p>
  * <p>
  * Company: www.itcast.com
  * </p>
  * 
- * @author ´«ÖÇ.ÑàÇà
- * @date 2015-4-22ÏÂÎç2:47:17
+ * @author ï¿½ï¿½ï¿½ï¿½.ï¿½ï¿½ï¿½ï¿½
+ * @date 2015-4-22ï¿½ï¿½ï¿½ï¿½2:47:17
  * @version 1.0
  */
 public class UserDaoImpl implements UserDao {
 
-	// ÐèÒªÏòdaoÊµÏÖÀàÖÐ×¢ÈëSqlSessionFactory
-	// ÕâÀïÍ¨¹ý¹¹Ôì·½·¨×¢Èë
+	// ï¿½ï¿½Òªï¿½ï¿½daoÊµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½SqlSessionFactory
+	// ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ì·½ï¿½ï¿½×¢ï¿½ï¿½
 	private SqlSessionFactory sqlSessionFactory;
 
 	public UserDaoImpl(SqlSessionFactory sqlSessionFactory) {
@@ -36,14 +36,14 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public User findUserById(int id) throws Exception {
-		//SqlSessionÊÇÏß³Ì²»°²È«µÄ£¬ËùÒÔÓ¦¸ÃÐ´ÔÚº¯ÊýÌåÄÚ
+		//SqlSessionï¿½ï¿½ï¿½ß³Ì²ï¿½ï¿½ï¿½È«ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Ð´ï¿½Úºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 
 		User user = sqlSession.selectOne("test.findUserById", id);
-		//ÕâÒ»ÐÐ¾¹È»²»±¨´í£¬Õâ²»ÀûÓÚ³ÌÐòÔ±¿ª·¢£¬ËµÃ÷²ÎÊýÊÇÒÔ·ºÐÍ½ÓÊÜ
+		//ï¿½ï¿½Ò»ï¿½Ð¾ï¿½È»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â²»ï¿½ï¿½ï¿½Ú³ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô·ï¿½ï¿½Í½ï¿½ï¿½ï¿½
 		//User user = sqlSession.selectOne("test.findUserById", new Date());    
 
-		// ÊÍ·Å×ÊÔ´
+		// ï¿½Í·ï¿½ï¿½ï¿½Ô´
 		sqlSession.close();
 
 		return user;
@@ -56,7 +56,7 @@ public class UserDaoImpl implements UserDao {
 
 		List<User> list = sqlSession.selectList("test.findUserByName", name);
 
-		// ÊÍ·Å×ÊÔ´
+		// ï¿½Í·ï¿½ï¿½ï¿½Ô´
 		sqlSession.close();
 
 		return list;
@@ -67,13 +67,13 @@ public class UserDaoImpl implements UserDao {
 	public void insertUser(User user) throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 
-		//Ö´ÐÐ²åÈë²Ù×÷
+		//Ö´ï¿½Ð²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		sqlSession.insert("test.insertUser", user);
 
-		// Ìá½»ÊÂÎñ
+		// ï¿½á½»ï¿½ï¿½ï¿½ï¿½
 		sqlSession.commit();
 
-		// ÊÍ·Å×ÊÔ´
+		// ï¿½Í·ï¿½ï¿½ï¿½Ô´
 		sqlSession.close();
 
 	}
@@ -82,13 +82,13 @@ public class UserDaoImpl implements UserDao {
 	public void deleteUser(int id) throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 
-		//Ö´ÐÐ²åÈë²Ù×÷
+		//Ö´ï¿½Ð²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		sqlSession.delete("test.deleteUser", id);
 
-		// Ìá½»ÊÂÎñ
+		// ï¿½á½»ï¿½ï¿½ï¿½ï¿½
 		sqlSession.commit();
 
-		// ÊÍ·Å×ÊÔ´
+		// ï¿½Í·ï¿½ï¿½ï¿½Ô´
 		sqlSession.close();
 
 	}

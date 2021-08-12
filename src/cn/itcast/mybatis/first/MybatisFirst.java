@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
 
+import cn.itcast.mybatis.mapper.UserMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -33,7 +34,7 @@ public class MybatisFirst {
 
 	// 根据id查询用户信息，得到一条记录结果
 	@Test
-	public void findUserByIdTest() throws IOException {
+	public void findUserByIdTest() throws Exception {
 
 		// mybatis配置文件
 		String resource = "SqlMapConfig.xml";
@@ -46,6 +47,10 @@ public class MybatisFirst {
 
 		// 通过工厂得到SqlSession
 		SqlSession sqlSession = sqlSessionFactory.openSession();
+
+
+		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+		User user2 = mapper.findUserById(1);
 
 		// 通过SqlSession操作数据库
 		// 第一个参数：映射文件中statement的id，等于=namespace+"."+statement的id
